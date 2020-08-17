@@ -1,0 +1,87 @@
+@import "../sass/_layout-mixins.scss";
+@import "../sass/_meida-mixins.scss";
+@import "../sass/global.scss";
+
+.blog-section {
+  padding: 112px 0 73px;
+
+  .post-item {
+    margin-bottom: 80px;
+    @include grid-container(repeat(12, 1fr), auto, 12px 12px);
+  }
+
+  .post-item-img {
+    @include ratio(392, 300, true);
+    @include bgImage();
+    @include grid-item(2 / span 4, 1);
+    align-self: start;
+
+    &:after {
+      @include pseudo(default);
+    }
+  }
+
+  .meta-box {
+    @include grid-item(7 / span 5, 1);
+    display: flex;
+    flex-direction: column;
+
+    .read-more {
+      margin-top: auto;
+    }
+  }
+}
+
+.pagination-wrapper {
+  margin-top: 187px;
+}
+
+.pagination {
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+
+  .page-numbers {
+    text-decoration: unset;
+    color: $light-gray;
+    font-size: 20px;
+    line-height: 1;
+    display: inline-block;
+
+    &.current {
+      color: $light-blue;
+      font-weight: 700;
+    }
+
+    &:not(.prev):not(.next) {
+      margin: 0 9px;
+    }
+
+    &.prev,
+    &.next {
+      width: 21px;
+
+      &:after {
+        @include pseudo(unset, inline-block);
+        width: 10px;
+        height: 10px;
+        top: 50%;
+        transform: rotate(135deg);
+      }
+    }
+
+    &.prev:after {
+      right: 0;
+      border-right: 3px solid $light-blue;
+      border-bottom: 3px solid $light-blue;
+      border-bottom-right-radius: 3px;
+    }
+
+    &.next:after {
+      left: 0;
+      border-left: 3px solid $light-blue;
+      border-top: 3px solid $light-blue;
+      border-top-left-radius: 3px;
+    }
+  }
+}

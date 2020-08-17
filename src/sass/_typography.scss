@@ -1,0 +1,23 @@
+// Headings styles
+
+h2 {
+
+    &.post-item-headline {
+        margin: 0 0 40px 0;
+
+        @include desktop() {
+            font-size: 28px;
+        }
+    }
+}
+
+// Paragraph styles
+
+p {
+    margin: 0 0 16px 0;
+
+    &.excerpt {
+        font-size: 16px;
+        line-height: 2;
+    }
+}
