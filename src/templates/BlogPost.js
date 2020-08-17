@@ -29,10 +29,6 @@ const BlogPostTemplate = () => {
       }
     }
   `)
-  console.log(
-    data.allWordpressPost.edges[0].node.featured_media.localFile.childImageSharp
-      .resolutions.src
-  )
   return (
     <Layout>
       <section className="container container--narrow blog-section">
