@@ -1,0 +1,29 @@
+@mixin hover($color: $secondary-color) {
+  @include desktop() {
+    &:hover {
+      color: $color;
+      transition: 0.3s ease-in-out;
+    }
+  }
+}
+
+@mixin bg-escape-grid($color) {
+  content: "";
+  display: inline-block;
+  background-color: $color;
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  left: calc(-1 * (var(--mobile-container-padding)));
+
+  @include desktop() {
+    left: calc((100vw - var(--desktop-container)) / 2 * -1);
+  }
+
+  @include desktop-xlg() {
+    left: calc((100vw - var(--desktop-xlg-container)) / 2 * -1);
+  }
+}

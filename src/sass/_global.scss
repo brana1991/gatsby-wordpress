@@ -1,14 +1,32 @@
-//Global css styles 
+// Container widths
+
+:root {
+  --mobile-container: 105rem;
+  --desktop-container: 74rem;
+  --desktop-xlg-container: 60rem;
+  --mobile-container-padding: 1rem;
+}
 
 // Colors
 
-$primary-color: #000000;
-$light-blue: #23C4FF;
-$gray: #4F4F4F;
+$black: #000000;
+$secondary-color: #14b0b4;
+$white: #ffffff;
+$light-blue: #23c4ff;
+$gray: #f3f3f3;
 $light-gray: #828282;
 
-// Links
+// input
 
-a {
-    text-decoration: unset;
+input {
+  padding-left: 20px;
+  font-family: ralewayregular;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+label {
+  font-family: ralewayregular;
 }

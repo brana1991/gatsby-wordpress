@@ -2,141 +2,147 @@
 * Layout mixins *
 ****************/
 
-@mixin centerX () {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+@mixin centerX() {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-@mixin centerY () {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
+@mixin centerY() {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-@mixin centerXY () {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+@mixin centerXY() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@mixin resetCenterX () {
-	position: static;
-	left: auto;
-	transform: translateX(0%);
+@mixin resetCenterX() {
+  position: static;
+  left: auto;
+  transform: translateX(0%);
 }
 
-@mixin resetCenterY () {
-	position: static;
-	top: auto;
-	transform: translateY(0%);
+@mixin resetCenterY() {
+  position: static;
+  top: auto;
+  transform: translateY(0%);
 }
 
-@mixin resetCenterXY () {
-	position: static;
-	top: auto;
-	left: auto;
-	transform: translate(0%, 0%);
+@mixin resetCenterXY() {
+  position: static;
+  top: auto;
+  left: auto;
+  transform: translate(0%, 0%);
 }
 
 @mixin absoluteFullSize() {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-@mixin pseudo($position: absolute, $display: block, $content: '') {
-	position: $position;
-	display: $display;
-	content: $content;
+@mixin pseudo($position: absolute, $display: block, $content: "") {
+  position: $position;
+  display: $display;
+  content: $content;
 }
 
 @mixin ratio($x, $y, $pseudo: false) {
-	$padding: unquote( ($y / $x) * 100 + '%');
-	@if $pseudo {
-		&:after {
-			width: 100%;
-			padding-bottom: $padding;
-		}
-	} @else {
-		padding: $padding;
-	}
+  $padding: unquote(($y / $x) * 100 + "%");
+  @if $pseudo {
+    &:after {
+      width: 100%;
+      padding-bottom: $padding;
+    }
+  } @else {
+    padding: $padding;
+  }
 }
 
 @mixin bgImage($size: cover) {
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: $size;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: $size;
 }
 
-@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
-	@include pseudo( $position );
-	width: 0;
-	height: 0;
-	@if $round {
-		border-radius: 3px;
-	}
-	@if $direction == down {
-		border-left: $size solid transparent;
-		border-right: $size solid transparent;
-		border-top: $size solid $color;
-		margin-top: 0 - round($size / 2.5);
-	} @else if $direction == up {
-		border-left: $size solid transparent;
-		border-right: $size solid transparent;
-		border-bottom: $size solid $color;
-		margin-bottom: 0 - round($size / 2.5);
-	} @else if $direction == right {
-		border-top: $size solid transparent;
-		border-bottom: $size solid transparent;
-		border-left: $size solid $color;
-		margin-right: -$size;
-	} @else if $direction == left {
-		border-top: $size solid transparent;
-		border-bottom: $size solid transparent;
-		border-right: $size solid $color;
-		margin-left: -$size;
-	}
+@mixin css-triangle(
+  $color,
+  $direction,
+  $size: 6px,
+  $position: absolute,
+  $round: false
+) {
+  @include pseudo($position);
+  width: 0;
+  height: 0;
+  @if $round {
+    border-radius: 3px;
+  }
+  @if $direction == down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round($size / 2.5);
+  } @else if $direction == up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round($size / 2.5);
+  } @else if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
+  } @else if $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
+  }
 }
 
-@mixin truncate( $truncation-boundary ) {
-	max-width: $truncation-boundary;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@mixin material-shadow( $z-depth: 1, $strength: 1, $color: black ) {
-	@if $z-depth == 1 {
-		box-shadow: 0 1px 3px rgba($color, $strength * 0.14),
-			0 1px 2px rgba($color, $strength * 0.24);
-	}
-	@if $z-depth == 2 {
-		box-shadow: 0 3px 6px rgba($color, $strength * 0.16),
-			0 3px 6px rgba($color, $strength * 0.23);
-	}
-	@if $z-depth == 3 {
-		box-shadow: 0 10px 20px rgba($color, $strength * 0.19),
-			0 6px 6px rgba($color, $strength * 0.23);
-	}
-	@if $z-depth == 4 {
-		box-shadow: 0 15px 30px rgba($color, $strength * 0.25),
-			0 10px 10px rgba($color, $strength * 0.22);
-	}
-	@if $z-depth == 5 {
-		box-shadow: 0 20px 40px rgba($color, $strength * 0.3),
-			0 15px 12px rgba($color, $strength * 0.22);
-	}
-	@if ($z-depth < 1) or ($z-depth > 5) {
-		@warn "$z-depth must be between 1 and 5";
-	}
+@mixin material-shadow($z-depth: 1, $strength: 1, $color: black) {
+  @if $z-depth == 1 {
+    box-shadow: 0 1px 3px rgba($color, $strength * 0.14),
+      0 1px 2px rgba($color, $strength * 0.24);
+  }
+  @if $z-depth == 2 {
+    box-shadow: 0 3px 6px rgba($color, $strength * 0.16),
+      0 3px 6px rgba($color, $strength * 0.23);
+  }
+  @if $z-depth == 3 {
+    box-shadow: 0 10px 20px rgba($color, $strength * 0.19),
+      0 6px 6px rgba($color, $strength * 0.23);
+  }
+  @if $z-depth == 4 {
+    box-shadow: 0 15px 30px rgba($color, $strength * 0.25),
+      0 10px 10px rgba($color, $strength * 0.22);
+  }
+  @if $z-depth == 5 {
+    box-shadow: 0 20px 40px rgba($color, $strength * 0.3),
+      0 15px 12px rgba($color, $strength * 0.22);
+  }
+  @if ($z-depth < 1) or ($z-depth > 5) {
+    @warn "$z-depth must be between 1 and 5";
+  }
 }
 
-@mixin global-wrapper () {
-	padding: 0 5%;
+@mixin global-wrapper() {
+  padding: 0 5%;
 }
 
 /*****************************************************************************
@@ -164,16 +170,16 @@
   $areas: false,
   $flow: row
 ) {
-	display: grid;
-	grid-template-columns: $columns;
-	grid-template-rows: $rows;
-	grid-auto-columns: $auto-columns;
-	grid-auto-rows: $auto-rows;
-	grid-gap: $gap;
-	grid-auto-flow: $flow;
-	@if ($areas) {
-		grid-template-areas: $areas;
-	}
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  grid-auto-columns: $auto-columns;
+  grid-auto-rows: $auto-rows;
+  grid-gap: $gap;
+  grid-auto-flow: $flow;
+  @if ($areas) {
+    grid-template-areas: $areas;
+  }
 }
 
 /*
@@ -185,9 +191,9 @@
 *
 */
 @mixin grid-item($column: auto, $row: auto, $area: false) {
-	grid-column: $column;
-	grid-row: $row;
-	@if ($area) {
-		grid-area: $area;
-	}
+  grid-column: $column;
+  grid-row: $row;
+  @if ($area) {
+    grid-area: $area;
+  }
 }

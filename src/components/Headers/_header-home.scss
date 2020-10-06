@@ -1,0 +1,25 @@
+.home-page {
+  padding-top: 123px;
+
+  .header-home {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $black;
+
+    .buttons-wrapper {
+      margin-left: -14px;
+
+      .divider-vertical {
+        padding: 0 9px;
+      }
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      top: -61px;
+      transform: translateX(-50%);
+    }
+  }
+}

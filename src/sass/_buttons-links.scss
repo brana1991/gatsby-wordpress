@@ -1,8 +1,43 @@
-// Links 
+// Links
 
-.blue-link {
-    color: $light-blue;
-    font-size: 22px;
-    line-height: 1.4;
-    text-decoration: unset;
+a {
+  color: $white;
+  text-decoration: none;
+
+  &.menu-link {
+    font-size: 24px;
+    line-height: 1.2;
+    padding: 21px 0;
+    display: block;
+  }
+}
+
+// Buttons
+
+.btn {
+  outline: 0;
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+  background: unset;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: ralewayregular;
+}
+
+.btn-rectangle {
+  padding: 14px;
+  font-size: 16px;
+}
+
+.btn-circle {
+  border-radius: 24px;
+  border: 2px solid $black;
+}
+
+.btn-submit {
+  padding: 13px 29px;
 }

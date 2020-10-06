@@ -1,26 +1,34 @@
 // Utility
 
 .container {
-    margin: 0 auto;
-    max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 var(--mobile-container-padding);
+  max-width: var(--mobile-container);
+
+  @include desktop() {
+    max-width: var(--desktop-container);
+    padding: unset;
+  }
+
+  @include desktop-xlg() {
+    max-width: var(--desktop-xlg-container);
+  }
 }
 
 .relative {
-    position: relative;
+  position: relative;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 // Clears
 
 .no-b-m {
-    margin-bottom: 0;
-}
-
-//colors {
-
-.gray-text {
-    color: $gray;
+  margin-bottom: 0;
 }

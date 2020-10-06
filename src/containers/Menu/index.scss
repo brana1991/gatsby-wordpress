@@ -1,0 +1,62 @@
+.menu-modal {
+  position: fixed;
+  background: black;
+  z-index: 99999; // make map in scss
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 55px 65px;
+
+  ul {
+    padding: 52px 0;
+    margin: 0;
+    text-align: center;
+
+    li {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      a {
+        flex: 0 0 auto;
+        position: relative;
+
+        &.active {
+          color: $secondary-color;
+
+          &:after {
+            content: "";
+            background-image: var(--bg-image);
+            position: absolute;
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            width: 48px;
+            height: 48px;
+          }
+        }
+
+        img {
+          margin-right: 15px;
+        }
+      }
+    }
+  }
+
+  .menu-logo {
+    g {
+      fill: $white;
+    }
+  }
+
+  .icon-close {
+    position: absolute;
+    right: 65px;
+    top: 55px;
+  }
+}

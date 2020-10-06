@@ -1,0 +1,106 @@
+@import "../../sass/layout-mixins";
+
+.archive-blog {
+  padding-top: 34px;
+  @include grid-container(repeat(3, 1fr), auto, 41px 14px);
+
+  .single-card {
+    display: flex;
+    flex-direction: column;
+
+    &:first-child {
+      align-items: flex-start;
+      @include grid-container(1fr 0.4fr 0.4fr, auto, 0 32px);
+      @include grid-item(1 / span 3);
+
+      h2 {
+        font-size: 40px;
+      }
+
+      .featured-image {
+        @include grid-item(1 / span 1, 1 / span 3);
+      }
+
+      .card-info {
+        @include grid-item(2 / span 4);
+      }
+
+      .post-date {
+        grid-column: 3 / span 4;
+        grid-row: 1/2;
+        justify-self: flex-end;
+      }
+    }
+
+    &:not(:first-child) {
+      .featured-image {
+        order: 2;
+      }
+
+      .card-categorie {
+        order: 1;
+      }
+
+      .card-info {
+        order: 3;
+      }
+    }
+
+    .featured-image {
+      &:hover,
+      &:focus {
+        @include desktop() {
+          picture {
+            img {
+              filter: grayscale(0);
+            }
+          }
+
+          &:before {
+            filter: grayscale(1);
+          }
+        }
+      }
+
+      picture {
+        img {
+          filter: grayscale(1);
+          -webkit-transition: 0.3s -webkit-filter linear;
+          -moz-transition: 0.3s -moz-filter linear;
+          -moz-transition: 0.3s filter linear;
+          -ms-transition: 0.3s -ms-filter linear;
+          -o-transition: 0.3s -o-filter linear;
+          transition: 0.3s filter linear, 0.3s -webkit-filter linear !important;
+        }
+      }
+
+      &:before {
+        content: "";
+        display: inline-block;
+        width: 85px;
+        height: 85px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-image: var(--catIcon);
+        background-position: center center;
+        background-size: cover;
+        z-index: 100;
+        filter: grayscale(0);
+        transition: 0.3s filter linear, 0.3s -webkit-filter linear !important;
+      }
+    }
+
+    .excerpt {
+      p {
+        line-height: 2.4ex;
+        height: 16.8ex;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+}
